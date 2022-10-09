@@ -1,6 +1,1 @@
-window.addEventListener('DocumentContentLoaded', () => {
-
-    console.log(123);
-    
-    alert(123);
-});
+console.log("hola");

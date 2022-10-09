@@ -1,4 +1,5 @@
 <?php
+
 ?>
 
 <!DOCTYPE html>
@@ -7,8 +8,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/style.css">
-    <title><?php echo $data["Titulos"]; ?></title>
+    <link rel="stylesheet" href="../../styles/style.css">
+    <title>Document</title>
 </head>
 <body>
     <div class="container">
@@ -100,7 +101,7 @@
                     </svg> Cerrar Sesión</a>
                 </div>
             </div>
-        </nav>
+        </nav>    
 
         <!-- ENCABEZADO DEL SITIO -->
         <div class="content">
@@ -119,9 +120,13 @@
                     <label> / </label>
                     <a href="#">Identificación paciente</a>
                     <label> / </label>
-                    <a href="#">Listado de Expedientes</a>
+                    <a href="#">Creación de Expedientes</a>
                 </div>
         
+                <div class="botones-encabezado">
+                    <input type="button" value = "Volver a la lista">
+                </div>
+
                 <!-- BANNER INFORMATIVO -->
                 <div class="banner">
                     <svg class=" navbar-icon" style="width:26px;height:26px" viewBox="0 0 24 24">
@@ -130,59 +135,23 @@
                     <h3>Listado de expedientes generados hasta la fecha</h3>
                 </div>
 
-                <h2><?php echo $data["Titulos"]; ?></h2>
-                    
-                <table class="dataTable"    >
-                        <thead>
-                            <tr>
-                                <th>Expediente</th>
-                                <th>Nombres</th>
-                                <th>Apellidos</th>
-                                <th>Fecha Nacimiento</th>
-                                <th>Edad</th>
-                                <th>Documento</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                <?php 
-                                    foreach($data["Pacientes"] as $dato){
+                <div class="rergistro">
+                    <h1>frvveg</h1>
+                    <form id = "RegistroExpediente" name = "RegistroExpediente" action="" method = "POST" autocomplete = "off">
+                    <input type="text">
                 
-                                        $nombreCompleto = $dato["primer_nombre"]. " ". $dato["segundo_nombre"];
-                                        $apellidoCompleto = $dato["primer_apellido"]. " ". $dato["segundo_apellido"];
-                
-                                        echo "<tr>";
-                                        echo "<td>".$dato["id_expediente"]."</td>";
-                                        echo "<td>".$nombreCompleto."</td>";
-                                        echo "<td>".$apellidoCompleto."</td>";
-                                        echo "<td>".$dato["fecha_nacimiento"]."</td>";
-                                        echo "<td>".$dato["edad"]." años </td>";
-                                        echo "<td>".$dato["numero_documento"]."</td>";
-                                        echo "<td>"."<input type='button' class = 'btn-ver-expediente' value = 'Ver Expediente'/>"."</td>";
-                                        echo "</tr>";
-                                    }
-                                ?>
-                        </tbody>    
-                </table>
+                    <div class="block">
+                        <input type="text" autocomplete="off" required/>
+                        <label class = "label-form">Nombre de usuario</label>
+                        <span></span>
+                    </div>
+                    </form>
+                </div>
+
 
             </div>
         </div>
     </div>
-    
-</body>
-<script src="./Scripts/main.js"></script>
-<script>
-    window.onload = () =>{
-        const MenuPaginaPrincipal = document.getElementById('PaginaPrincipal');
-        const IdentificacionPaciente = document.getElementById('IdentificacionPaciente');
-        const ArrowIdentificacionPaciente = document.getElementById('ArrowIdentificacionPaciente');
-        
-        IdentificacionPaciente.addEventListener('click', () => {
-            console.log("Holiss");
-            ArrowIdentificacionPaciente.classList.toggle('rotate');
-            IdentificacionPaciente.classList.toggle( 'menu-active-toggle' );
-        });
-    };
 
-</script>
+</body>
 </html>

@@ -33,8 +33,10 @@
 .navbar > .navbar-menu .navbar-brand-main{
     margin-top: 5px;
     overflow: hidden;
-    height: auto;
+    height: 50px;
     width: 95%;
+    transition: .6s ease-in-out;
+    cursor: pointer;
 }
 
 .navbar > .navbar-menu .navbar-brand-main > a  {
@@ -44,13 +46,13 @@
     border-top-right-radius: 20px ;
     border-bottom-right-radius: 20px ;
     display: flex;
-    justify-content: column;
+    flex-flow: row nowrap;
     align-content: center;
     align-items: center;
-    font-size: 1rem;
+    font-size: 0.9rem;
     position: relative;
     text-decoration: none;
-    padding: 10px 0px 10px 0px;
+    padding: 10px 0px 10px 10px;
     transition: 0.1s  ease;
 }
 
@@ -58,13 +60,10 @@
     background: #3A5F7A;
 }
 
-.navbar-menu-active{
+.navbar > .navbar-menu .navbar-brand-main> .navbar-item-active{
     color: #4B7CA0;
     background: #F4F7FD;
-}
-
-.navbar-menu-active > a{
-    color: #4B7CA0;
+    font-weight: bold;
 }
 
 .icon-active{
@@ -92,8 +91,16 @@
     margin-right: 10px;
 }
 
-/* ESTILOS DE HEADER */
+.menu-active-toggle {
+    height: auto;
+}
 
+.rotate{
+    transform: rotateZ(180deg);
+}
+
+
+/* ESTILOS DEL CONTENEDOR DE TRABAJO */
 .content{
     width: 100%;
 }
@@ -103,12 +110,30 @@
     margin: 25px auto 10px auto;
 }
 
+/* ESTILOS DE HEADER */
 .main-header{
     background: #FFFFFF;
     border-bottom: 3px solid #4B7CA0;
     padding: 15px 0px 15px 0px;
     width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
     box-shadow: 3px 0px 1px rgba(0,0,0,1);
+}
+
+.main-header > .establecimiento{    
+    color: #4B7CA0;
+    font-weight: bolder;
+    font-size: 1.1rem;
+    margin-left: 100px;
+}
+
+.main-header > .usuario{
+    color: #000000;
+    font-weight: bolder;
+    font-size: .8rem;
 }
 
 /* ESTILOS DE BREADCRUMB */
@@ -155,15 +180,110 @@
 /* ESTILOS DE TABLA */
 .dataTable{
     width: 100%;
-    box-shadow: 2px 0px 6px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.6);
     border-radius: 5px;
     background: #F4F7FD;
-    padding: 10px 5px 10px 5px;
+    padding: 15px 10px 15px 10px;
     text-align: left;
 }
 
 .dataTable > thead > tr > th{
-    border-bottom: 2px solid red;
-    background: yellow;
-    gap: 0;
+    border-bottom: rgb(219, 219, 219);
+    padding: 15px 0px 15px 0px;
+    font-size: .9rem;
+
 }
+
+.dataTable > tbody > tr > td{
+    border-bottom: 2px solid rgb(219, 219, 219);
+    font-size: .9rem;
+    padding: 15px 0px 15px 0px;
+}
+
+.dataTable > tbody > tr{
+    transition: .1s ease-in-out;
+}
+
+.dataTable > tbody > tr:hover{
+    background: #eeeeee;
+}
+
+.btn-ver-expediente{
+    border: 2px solid #F57046;
+    background-color: none;
+    color: #F57046;
+    font-weight: bold;
+    padding: 8px 7px 8px 7px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.btn-ver-expediente:hover{
+    background: #F57046;
+    color:#F4F7FD;
+}
+
+/* ESTILOS DEL REGISTRO DE PACIENTE */
+.block:first-of-type {
+    margin-top: 1.5em;
+  }
+  
+  .block:last-of-type {
+    margin-top: 0.7em;
+  }
+  
+  .block {
+    position: relative;
+    overflow: hidden;
+    width: auto;
+  }
+  
+  input {
+    position: relative;
+    border: none;
+    border-bottom: 1px solid #9f9f9a;
+    padding: 3px 8px;
+    padding-top: 18px;
+    outline: none;
+  }
+  
+  .label-form {
+    position: absolute;
+    top: 10px;
+    left: 9px;
+    color: #666;
+    pointer-events: none;
+    transition: 0.4s all ease;
+  }
+  
+  .block input:focus ~ .label-form,
+  .block input:valid ~ .label-form {
+    top: 4px;
+    font-size: 12px;
+    color: #222;
+  }
+  
+  span {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: -100%;
+    transition: 0.4s all ease;
+  }
+  
+  .block input:focus ~ span,
+  .block input:valid ~ span {
+    left: 0%;
+    background: #000;
+  }
+  
+  /* ESTILO DE ENCABEZADO DE BOTONES */
+  .botones-encabezado{
+    position:relative;
+    width:100%;
+    height:auto;
+    border: 2px solid red;
+    margin-bottom: 25px;
+  }
