@@ -1,0 +1,330 @@
+;-- Creación de base de gatos
+create database if not exists expediente_virtual;
+
+;-- Usar la base de gatos
+use expediente_virtual;
+
+;-- Tabla para la creación de expedientes
+create table if not exists mnt_expediente(
+	id int auto_increment,
+   	id_expediente int not null,
+	id_paciente int not null,
+	id_establecimiento int not null,
+	fecha_creacion date,
+	hora_creacion time,
+    	fecha_modificacion date,
+    	hora_modificacion time,
+	id_usuario int not null,
+	primary key( id )
+) ENGINE=InnoDB;
+
+alter table mnt_expediente
+AUTO_INCREMENT = 1;
+
+;-- Tabla para la creación de pacientes
+create table if not exists mnt_paciente(
+	id_paciente int auto_increment,
+	id_expediente int,
+	primer_nombre varchar(25) not null,
+	segundo_nombre varchar(25),
+	primer_apellido varchar(25) not null,
+	segundo_apellido varchar(25),
+	fecha_nacimiento date not null,
+	edad int not null,
+	id_sexo int not null,
+	id_pais_nacimiento int not null,
+	id_departamento_nacimiento int not null,
+	id_municipio_nacimiento int not null,
+	id_tipo_documento int not null,
+	numero_documento varchar(10) not null,
+	direccion varchar(200) not null,
+	id_departamento_domicilio int not null,
+	id_municipio_domicilio int not null,
+	telefono int,
+	correo_electronico varchar(120),
+	primer_nombre_acompaniante varchar(25) not null,
+	segundo_nombre_acompaniante varchar(25),
+	pimer_apellido_acompaniante varchar(25) not null,
+	segundo_apellido_acompaniante varchar(25),
+	fecha_registro date,
+	hora_creacion time,
+	fecha_modificacion date,
+	hora_modificacion time,
+	id_usuario int not null,
+	primary key( id_paciente, id_expediente )
+) ENGINE=InnoDB;
+
+alter table mnt_paciente
+AUTO_INCREMENT = 1;
+
+;-- Tabla para el registro de usuarios
+create table if not exists mnt_usuario  (
+	id_usuario int auto_increment,
+	primer_nombre varchar(25) not null,
+	segundo_nombre varchar(25),
+	primer_apellido varchar(25) not null,
+	segundo_apellido varchar(25),
+	nombre_usuario varchar(30),
+	id_tipo_documento int not null,
+	numero_documento int not null,
+	password blob not null,
+	token varchar(1000),
+	conectado boolean default false,
+    ultima_conexion datetime not null,
+	primary key (id_usuario)
+) ENGINE=InnoDB;
+
+alter table mnt_usuario
+AUTO_INCREMENT = 1;
+
+;-- CREACION DE CATALOGOS
+
+;-- Creacion de tabla para catalogo de sexos
+create table if not exists ctl_sexo(
+	id_sexo int auto_increment,
+	nombre varchar ( 15 ) not null,
+	abreviatura char( 1 ) not null,
+	primary key ( id_sexo )
+) ENGINE=InnoDB;
+
+alter table ctl_sexo
+ auto_increment = 1;
+
+
+;-- Creacion de tabla para catalogo de pais de nacimiento
+create table if not exists ctl_pais_nacimiento(
+	id_pais_nacimiento int auto_increment,
+	nombre varchar(30) not null,
+	primary key(id_pais_nacimiento)
+) ENGINE=InnoDB;
+
+alter table ctl_pais_nacimiento
+AUTO_INCREMENT = 1;
+
+
+
+;-- Creacion de tabla para catalogo de departamento de nacimiento
+create table if not exists ctl_departamento_nacimiento(
+	id_departamento_nacimiento int auto_increment,
+	nombre varchar(60) not null,
+	abreviatura varchar(20),
+	id_pais_nacimiento int not null,
+	primary key (id_departamento_nacimiento)
+) ENGINE=InnoDB;
+
+alter table ctl_departamento_nacimiento
+AUTO_INCREMENT = 1;
+
+
+
+;-- Creacion de tabla para catalogo de municipios de nacimiento
+create table if not exists ctl_municipio_nacimiento (
+	id_municipio_nacimiento int auto_increment,
+	nombre varchar(80) not null,
+	abreviatura varchar(20),
+	id_departamento_nacimiento int not null,
+	primary key (id_municipio_nacimiento)
+) ENGINE=InnoDB;
+
+alter table ctl_municipio_nacimiento;
+
+
+;-- Creacion de tabla para catalogo de tipos de documentos
+create table if not exists ctl_tipo_documento(
+	id_tipo_documento int auto_increment,
+	nombre varchar(50) not null,
+	abreviatura varchar(10),
+	primary key (id_tipo_documento)
+) ENGINE=InnoDB;
+
+alter table ctl_tipo_documento
+AUTO_INCREMENT = 1;
+
+
+
+;-- Creacion de tabla para catalogo de departamentos de domicilio
+create table if not exists ctl_departamento_domicilio(
+	id_departamento_domicilio int auto_increment,
+	nombre varchar(60) not null,
+	abreviatura varchar(20),
+	id_pais_nacimiento int not null,
+	primary key (id_departamento_domicilio)
+) ENGINE=InnoDB;
+
+alter table ctl_departamento_domicilio
+AUTO_INCREMENT = 1;
+
+
+;-- Creacion de tabla para catalogo de municipios de domicilio
+create table if not exists ctl_municipio_domicilio (
+	id_municipio_domicilio int auto_increment,
+	nombre varchar(80) not null,
+	abreviatura varchar(20),
+	id_departamento_domicilio int not null,
+	primary key (id_municipio_domicilio)
+) ENGINE=InnoDB;
+
+alter table ctl_municipio_domicilio
+AUTO_INCREMENT = 1;
+
+;-- LLAVES FORANEAS
+
+;-- Llave foranea para la tabla expediente (id_expediente)
+alter table mnt_expediente 
+add CONSTRAINT fk_id_expediente foreign key ( id_paciente, id_expediente ) REFERENCES mnt_paciente( id_paciente, id_expediente );
+
+;-- Llave foranea para la tabla expediente (id_usuario)
+alter table mnt_expediente 
+add CONSTRAINT fk_id_usuario foreign key ( id_usuario ) REFERENCES mnt_usuario( id_usuario );
+
+;-- Llave foranea para la ctl-sexo (id_sexo)
+alter table mnt_paciente
+add CONSTRAINT fk_id_sexo foreign key ( id_sexo ) REFERENCES ctl_sexo( id_sexo );
+
+;-- Llave foranea para la tabla expediente (id_usuario)
+alter table mnt_expediente
+add CONSTRAINT fk_id_usuario_expediente foreign key ( id_usuario ) REFERENCES mnt_usuario( id_usuario );
+
+;-- Llave foranea para la tabla ctl_pais_nacimiento (id_pais_nacimiento)
+alter table mnt_paciente
+add CONSTRAINT fk_id_pais_nacimiento foreign key ( id_pais_nacimiento ) REFERENCES ctl_pais_nacimiento( id_pais_nacimiento );
+
+;-- Llave foranea para la tabla ctl_departamento_nacimiento (id_departamento_nacimiento)
+alter table mnt_paciente
+add CONSTRAINT fk_id_departamento_nacimiento foreign key ( id_departamento_nacimiento ) REFERENCES ctl_departamento_nacimiento( id_departamento_nacimiento );
+
+;-- Llave foranea para la tabla ctl_municipio_nacimiento (id_municipio_nacimiento)
+alter table mnt_paciente
+add CONSTRAINT fk_id_municipio_nacimiento foreign key ( id_municipio_nacimiento ) REFERENCES ctl_municipio_nacimiento( id_municipio_nacimiento );
+
+;-- Llave foranea para la tabla ctl_tipo_documento (id_tipo_documento)
+alter table mnt_paciente
+add CONSTRAINT fk_id_tipo_documento foreign key ( id_tipo_documento ) REFERENCES ctl_tipo_documento( id_tipo_documento );
+
+;-- Llave foranea para la tabla ctl_departamento_domicilio (id_departamento_domicilio)
+alter table mnt_paciente
+add CONSTRAINT fk_id_departamento_domicilio foreign key ( id_departamento_domicilio ) REFERENCES ctl_departamento_domicilio( id_departamento_domicilio );
+
+;-- Llave foranea para la tabla usuario (id_usuario) 
+alter table mnt_paciente 
+add CONSTRAINT fk_id_usuario_paciente foreign key ( id_usuario ) REFERENCES mnt_usuario( id_usuario );
+
+;-- Llave foranea para la tabla ctl_municipio_domicilio (id_municipio_domicilio)
+alter table mnt_paciente
+add CONSTRAINT fk_id_municipio_domicilio foreign key ( id_municipio_domicilio ) REFERENCES ctl_municipio_domicilio( id_municipio_domicilio );
+
+;-- INSERSION DE GATOS
+
+insert into ctl_sexo ( nombre, abreviatura ) values ( 'Femenino','F' );
+insert into ctl_sexo ( nombre, abreviatura ) values ( 'Masculino','M' );
+insert into ctl_sexo ( nombre, abreviatura ) values ( 'Indeterminado', 'I' );
+
+
+insert into ctl_pais_nacimiento ( nombre ) values ( 'El Salvador' );
+insert into ctl_pais_nacimiento ( nombre ) values ( 'Guatemala' );
+insert into ctl_pais_nacimiento ( nombre ) values ( 'Honduras' );
+insert into ctl_pais_nacimiento ( nombre ) values ( 'Costa Rica' );
+insert into ctl_pais_nacimiento ( nombre ) values ( 'Panama' );
+insert into ctl_pais_nacimiento ( nombre ) values ( 'Nicargua' );
+insert into ctl_pais_nacimiento ( nombre ) values ( 'Belice' );
+
+
+insert into ctl_departamento_nacimiento ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Ahuachapan','AH',1 );
+insert into ctl_departamento_nacimiento ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Santa Ana','SA',1 );
+insert into ctl_departamento_nacimiento ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Sonsonate','SO',1 );
+insert into ctl_departamento_nacimiento ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Chalatenango','CH',1 );
+insert into ctl_departamento_nacimiento ( nombre, abreviatura, id_pais_nacimiento ) values ( 'San Salvador','SS',1 );
+insert into ctl_departamento_nacimiento ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Cuscatlan','CU',1 );
+insert into ctl_departamento_nacimiento ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Cabañas','CA',1 );
+insert into ctl_departamento_nacimiento ( nombre, abreviatura, id_pais_nacimiento ) values ( 'La Libertad','LI',1 );
+insert into ctl_departamento_nacimiento ( nombre, abreviatura, id_pais_nacimiento ) values ( 'La Paz','PA',1 );
+insert into ctl_departamento_nacimiento ( nombre, abreviatura, id_pais_nacimiento ) values ( 'San Vicente','SV',1 );
+insert into ctl_departamento_nacimiento ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Usulutan','US',1 );
+insert into ctl_departamento_nacimiento ( nombre, abreviatura, id_pais_nacimiento ) values ( 'San Miguel','SM',1 );
+insert into ctl_departamento_nacimiento ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Morazán','MO',1 );
+insert into ctl_departamento_nacimiento ( nombre, abreviatura, id_pais_nacimiento ) values ( 'LA Unión','UN',1 );
+
+
+insert into ctl_municipio_nacimiento ( nombre, id_departamento_nacimiento) values ( 'Tabuca', 1 );
+insert into ctl_municipio_nacimiento ( nombre, id_departamento_nacimiento) values ( 'Texistepeque', 2 );
+insert into ctl_municipio_nacimiento ( nombre, id_departamento_nacimiento) values ( 'Izalco', 3 );
+insert into ctl_municipio_nacimiento ( nombre, id_departamento_nacimiento) values ( 'Las Vueltas', 4 );
+insert into ctl_municipio_nacimiento ( nombre, id_departamento_nacimiento) values ( 'San Salvador', 5 );
+insert into ctl_municipio_nacimiento ( nombre, id_departamento_nacimiento) values ( 'Tenancingo', 6 );
+insert into ctl_municipio_nacimiento ( nombre, id_departamento_nacimiento) values ( 'Jutiapa', 7 );
+insert into ctl_municipio_nacimiento ( nombre, id_departamento_nacimiento) values ( 'Tepecoyo', 8 );
+insert into ctl_municipio_nacimiento ( nombre, id_departamento_nacimiento) values ( 'San Emigdio', 9 );
+insert into ctl_municipio_nacimiento ( nombre, id_departamento_nacimiento) values ( 'Verapaz', 10 );
+insert into ctl_municipio_nacimiento ( nombre, id_departamento_nacimiento) values ( 'jiquilisco', 11 );
+insert into ctl_municipio_nacimiento ( nombre, id_departamento_nacimiento) values ( 'El Transito', 12 );
+insert into ctl_municipio_nacimiento ( nombre, id_departamento_nacimiento) values ( 'Osicala', 13 );
+insert into ctl_municipio_nacimiento ( nombre, id_departamento_nacimiento) values ( 'Conchagua', 13 );
+
+
+insert into ctl_tipo_documento ( abreviatura, nombre ) values ( 'Documento Único de Identidad', 'DUI' );
+insert into ctl_tipo_documento ( nombre ) values ( 'Pasaporte');
+insert into ctl_tipo_documento ( nombre ) values ( 'Carnet de residencia');
+insert into ctl_tipo_documento ( nombre ) values ( 'NIT');
+
+
+insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Ahuachapan','AH',1 );
+insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Santa Ana','SA',1 );
+insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Sonsonate','SO',1 );
+insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Chalatenango','CH',1 );
+insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'San Salvador','SS',1 );
+insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Cuscatlan','CU',1 );
+insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Cabañas','CA',1 );
+insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'La Libertad','LI',1 );
+insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'La Paz','PA',1 );
+insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'San Vicente','SV',1 );
+insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Usulutan','US',1 );
+insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'San Miguel','SM',1 );
+insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Morazán','MO',1 );
+insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'LA Unión','UN',1 );
+
+
+insert into ctl_municipio_domicilio ( nombre, id_departamento_domicilio) values ( 'Tabuca', 1 );
+insert into ctl_municipio_domicilio ( nombre, id_departamento_domicilio) values ( 'Texistepeque', 2 );
+insert into ctl_municipio_domicilio ( nombre, id_departamento_domicilio) values ( 'Izalco', 3 );
+insert into ctl_municipio_domicilio ( nombre, id_departamento_domicilio) values ( 'Las Vueltas', 4 );
+insert into ctl_municipio_domicilio ( nombre, id_departamento_domicilio) values ( 'San Salvador', 5 );
+insert into ctl_municipio_domicilio ( nombre, id_departamento_domicilio) values ( 'Tenancingo', 6 );
+insert into ctl_municipio_domicilio ( nombre, id_departamento_domicilio) values ( 'Jutiapa', 7 );
+insert into ctl_municipio_domicilio ( nombre, id_departamento_domicilio) values ( 'Tepecoyo', 8 );
+insert into ctl_municipio_domicilio ( nombre, id_departamento_domicilio) values ( 'San Emigdio', 9 );
+insert into ctl_municipio_domicilio ( nombre, id_departamento_domicilio) values ( 'Verapaz', 10 );
+insert into ctl_municipio_domicilio ( nombre, id_departamento_domicilio) values ( 'jiquilisco', 11 );
+insert into ctl_municipio_domicilio ( nombre, id_departamento_domicilio) values ( 'El Transito', 12 );
+insert into ctl_municipio_domicilio ( nombre, id_departamento_domicilio) values ( 'Osicala', 13 );
+insert into ctl_municipio_domicilio ( nombre, id_departamento_domicilio) values ( 'Conchagua', 13 );
+
+insert into mnt_usuario ( primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, nombre_usuario, id_tipo_documento, numero_documento, password, conectado, ultima_conexion ) values ('Ivan', 'Alessandro', 'Mendoza', 'Landaverde', 'imendoza', 1, 062082694, 123, true, NOW());
+
+create procedure registra_expediente(
+	IN par_id_expediente int,
+    IN par_primer_nombre varchar(25),
+    IN par_segundo_nombre varchar(25),
+	IN par_primer_apellido varchar(25),
+    IN par_segundo_apellido varchar(25),
+    IN par_fecha_nacimiento DATE,
+    IN par_edad int,
+    IN par_id_sexo int,
+    IN par_id_pais_nacimiento int,
+    IN par_id_departamento_nacimiento int,
+    IN par_id_municipio_nacimiento int,
+    IN par_id_tipo_documento int,
+    IN par_numero_documento varchar(10),
+    IN par_direccion varchar(200),
+    IN par_id_departamento_domicilio int,
+    IN par_id_municipio_domicilio int,
+    IN par_telefono int,
+    IN par_primer_nombre_acompaniante varchar(25),
+    IN par_segundo_nombre_acompaniante varchar(25),
+    IN par_primer_apellido_acompaniante varchar(25),
+    IN par_segundo_apellido_acompaniante varchar(25),
+	IN par_fecha_registro DATE,
+    IN par_hora_creacion TIME,
+    IN par_id_usuario int
+)
+
+insert into mnt_paciente ( id_expediente, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, edad, id_sexo, id_pais_nacimiento, id_departamento_nacimiento, id_municipio_nacimiento, id_tipo_documento, numero_documento, direccion, id_departamento_domicilio, id_municipio_domicilio, telefono, primer_nombre_acompaniante, segundo_nombre_acompaniante, pimer_apellido_acompaniante, segundo_apellido_acompaniante, fecha_registro, hora_creacion, id_usuario ) VALUES (par_id_expediente, par_primer_nombre, par_segundo_nombre, par_primer_apellido, par_segundo_apellido, par_fecha_nacimiento, par_edad, par_id_sexo, par_id_pais_nacimiento, par_id_departamento_nacimiento, par_id_municipio_nacimiento, par_id_tipo_documento, par_numero_documento, par_direccion, par_id_departamento_domicilio, par_id_municipio_domicilio, par_telefono, par_primer_nombre_acompaniante, par_segundo_nombre_acompaniante, par_pimer_apellido_acompaniante, par_segundo_apellido_acompaniante, CURDATE(), CURTIME(), par_id_usuario);

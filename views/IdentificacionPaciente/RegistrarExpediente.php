@@ -124,7 +124,8 @@
                 </div>
         
                 <div class="botones-encabezado">
-                    <input type="button" value = "Volver a la lista">
+                    <input type = "button" value = "Volver a la lista" class = "boton-encabezado">
+                    <button class = "boton-encabezado">Volver a la lista</button>
                 </div>
 
                 <!-- BANNER INFORMATIVO -->
@@ -139,13 +140,182 @@
 
                 <div class="registro">
                     <form id = "RegistroExpediente" class = "form-registro" name = "RegistroExpediente" action="" method = "POST" autocomplete = "off">
-                        <label class = "label-form-information">INFORMACIÖN DEL PACIENTE</label>
+                        <label class = "label-form-information">Información del paciente</label>
                         <div class="form-seccion-uno">
-                            <div class="block">
-                                <input type="text" autocomplete="off" required/>
-                                <label class = "label-form">Nombre de usuario</label>
-                                <span></span>
+                            <div class="form-row">
+                                <div class="block block1">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Primer apellido*</label>
+                                    <span></span>
+                                </div>
+                                <div class="block block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Segundo apellido*</label>
+                                    <span></span>
+                                </div>
                             </div>
+                            <div class="form-row">
+                                <div class="block block1">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Primer nombre*</label>
+                                    <span></span>
+                                </div>
+                                <div class="block block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Segundo nombre*</label>
+                                    <span></span>
+                                </div>
+                            </div>      
+                        </div>
+                        <label class = "label-form-information">Datos de nacimiento</label>
+                        <div class="form-seccion-uno">
+                            <div class="form-row">
+                                <div class="block block1">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Fecha Nacimiento*</label>
+                                    <span></span>
+                                </div>
+                                <div class="block block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Edad*</label>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="block block1">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Sexo*</label>
+                                    <span></span>
+                                </div>
+                                <div class="block block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Pais de nacimiento*</label>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="block block1">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Departamento nacimiento*</label>
+                                    <span></span>
+                                </div>
+                                <div class="block block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Municipio nacimiento*</label>
+                                    <span></span>
+                                </div>
+                            </div>        
+                        </div>
+                        <label class = "label-form-information">Datos de identificación</label>
+                        <div class="form-seccion-uno">
+                            <div class="form-row">
+                                <div class="block block1">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Tipo documento*</label>
+                                    <span></span>
+                                </div>
+                                <div class="block block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Número documento*</label>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="block block1 block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Dirección*</label>
+                                    <span></span>
+                                </div>
+                                <div class="block block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Segundo nombre*</label>
+                                    <span></span>
+                                </div>
+                            </div>      
+                        </div>
+                        <label class = "label-form-information">Datos del acompañante</label>
+                        <div class="form-seccion-uno">
+                            <div class="form-row">
+                                <div class="block block1">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Primer apellido*</label>
+                                    <span></span>
+                                </div>
+                                <div class="block block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Segundo apellido*</label>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="block block1">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Primer nombre*</label>
+                                    <span></span>
+                                </div>
+                                <div class="block block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Segundo nombre*</label>
+                                    <span></span>
+                                </div>
+                            </div>      
+                        </div>
+                        <label class = "label-form-information">Datos del acompañante</label>
+                        <div class="form-seccion-uno">
+                            <div class="form-row">
+                                <div class="block block1">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Primer apellido*</label>
+                                    <span></span>
+                                </div>
+                                <div class="block block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Segundo apellido*</label>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="block block1">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Primer nombre*</label>
+                                    <span></span>
+                                </div>
+                                <div class="block block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Segundo nombre*</label>
+                                    <span></span>
+                                </div>
+                            </div>      
+                        </div>
+                        <label class = "label-form-information">Número de Expediente</label>
+                        <div class="form-seccion-uno">
+                            <div class="form-row">
+                                <div class="block block1">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Primer apellido*</label>
+                                    <span></span>
+                                </div>
+                                <div class="block block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Segundo apellido*</label>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="block block1">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Primer nombre*</label>
+                                    <span></span>
+                                </div>
+                                <div class="block block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Segundo nombre*</label>
+                                    <span></span>
+                                </div>
+                            </div>      
+                        </div>
+                        <div class="enviar-form">
+                            <input type="submit" class = "enviar-form" value = "Enviar" name="" id="">
                         </div>
                     </form>
                 </div>
@@ -156,4 +326,15 @@
     </div>
 
 </body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="../../Scripts/main.js"></script>
+<script>
+    console.log(123)
+    Swal.fire({
+        title: 'Error!',
+        text: 'Do you want to continue',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+    })
+</script>
 </html>

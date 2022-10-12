@@ -228,11 +228,12 @@
 .registro{
     border: 2px solid rgb(210, 210, 210);
     border-top: 2px solid #F57046;
-    width: 85%;
-    margin: auto;
+    width: 90%;
+    margin: auto auto 60px auto;
     overflow: hidden;
     border-radius: 5px;
-    padding: 15px 10px 15px 10px;
+    padding: 75px 10px 75px 10px;
+    margin-bottom: 30px;
 }
 
 /* ESTILOS DEL FORMUALRIO DE REGISTRO */
@@ -248,22 +249,55 @@
 }
 
 .label-form-information{
-    border: 3px solid red;
-    border-bottom: 3px solid ;
+    color: #4B7CA0;
+    font-weight: bolder;
+    padding: 5px 3px 5px 3px;
 }
 
 .form-seccion-uno{
-    border: 2px solid red;
+    border-top: 4px solid #4B7CA0;
+    margin-top: 10px;
+    padding: 0px 10px 25px 10px;
+    margin-bottom: 20px;
+}
+
+/* ESTILO DE ENCABEZADO DE BOTONES */
+.botones-encabezado{
+  position:relative;
+  width:100%;
+  height:auto;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.botones-encabezado > .boton-encabezado{
+    background: #92A4CE;
+    border: 1px solid #9DB3E8;
+    padding: 10px 10px 10px 10px;
+    font-size: 1rem;
+    color: #FFFFFF;
+    border: 1px solid #9DB3E8;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.registro > .form-registro > .form-seccion-uno > .form-row{
+    position: relative;
+    display: grid;
+    grid-template: 
+    "block1 block2" auto/
+     50%    50%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    column-gap: 20px;
+    margin-top: 30px;
 }
 
 /* ESTILOS DEL REGISTRO DE PACIENTE */
-.block:first-of-type {
-    margin-top: 1.5em;
-  }
-  
-  .block:last-of-type {
-    margin-top: 0.7em;
-  }
+
   
   .block {
     position: relative;
@@ -271,14 +305,17 @@
     width: auto;
   }
   
-  input {
+  .registro > .form-registro input{
     position: relative;
     border: none;
-    border-bottom: 1px solid #9f9f9a;
+    border-bottom: 3px solid #868686;
     padding: 3px 8px;
     padding-top: 18px;
     outline: none;
     overflow-x: hidden;
+    background: #F4F7FD;
+    width: 100%;
+    font-size: 1rem;
   }
   
   .label-form {
@@ -288,19 +325,22 @@
     color: #666;
     pointer-events: none;
     transition: 0.4s all ease;
+    font-size: .9rem;
   }
   
   .block input:focus ~ .label-form,
   .block input:valid ~ .label-form {
-    top: 4px;
-    font-size: 12px;
-    color: #222;
+    top: 0px;
+    left: 7px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #4B7CA0;
   }
   
   span {
     position: absolute;
     width: 100%;
-    height: 1px;
+    height: 3px;
     bottom: 0;
     left: -100%;
     transition: 0.4s all ease;
@@ -309,14 +349,6 @@
   .block input:focus ~ span,
   .block input:valid ~ span {
     left: 0%;
-    background: #000;
+    background: #4B7CA0;
   }
   
-  /* ESTILO DE ENCABEZADO DE BOTONES */
-  .botones-encabezado{
-    position:relative;
-    width:100%;
-    height:auto;
-    border: 2px solid red;
-    margin-bottom: 25px;
-  }
