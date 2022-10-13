@@ -307,7 +307,7 @@
                             </div>      
                         </div>
                         <div class="enviar-form">
-                            <input type="submit" class = "btn-enviar-form" value = "Enviar" name="" id="">
+                            <input type="submit" class = "btn-enviar-form" value = "Enviar" name="btn-enviar" id="btn_enviar">
                         </div>
                     </form>
                 </div>
@@ -329,5 +329,6 @@
         icon: 'error',
         confirmButtonText: 'Cool'
     })*/
+
 </script>
 </html>
