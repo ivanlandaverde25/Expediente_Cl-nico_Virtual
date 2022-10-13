@@ -226,9 +226,28 @@
                                     <label class = "label-form">Dirección*</label>
                                     <span></span>
                                 </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="block block1 block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Departamento domicilio*</label>
+                                    <span></span>
+                                </div>
                                 <div class="block block2">
                                     <input type="text" autocomplete="off" required/>
-                                    <label class = "label-form">Segundo nombre*</label>
+                                    <label class = "label-form">Municipio domicilio*</label>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="block block1 block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Telefiono</label>
+                                    <span></span>
+                                </div>
+                                <div class="block block2">
+                                    <input type="text" autocomplete="off" required/>
+                                    <label class = "label-form">Correo electronico</label>
                                     <span></span>
                                 </div>
                             </div>      
@@ -258,31 +277,16 @@
                                     <label class = "label-form">Segundo nombre*</label>
                                     <span></span>
                                 </div>
-                            </div>      
-                        </div>
-                        <label class = "label-form-information">Datos del acompañante</label>
-                        <div class="form-seccion-uno">
-                            <div class="form-row">
-                                <div class="block block1">
-                                    <input type="text" autocomplete="off" required/>
-                                    <label class = "label-form">Primer apellido*</label>
-                                    <span></span>
-                                </div>
-                                <div class="block block2">
-                                    <input type="text" autocomplete="off" required/>
-                                    <label class = "label-form">Segundo apellido*</label>
-                                    <span></span>
-                                </div>
                             </div>
                             <div class="form-row">
                                 <div class="block block1">
                                     <input type="text" autocomplete="off" required/>
-                                    <label class = "label-form">Primer nombre*</label>
+                                    <label class = "label-form">Tipo documento*</label>
                                     <span></span>
                                 </div>
                                 <div class="block block2">
                                     <input type="text" autocomplete="off" required/>
-                                    <label class = "label-form">Segundo nombre*</label>
+                                    <label class = "label-form">Número de documento*</label>
                                     <span></span>
                                 </div>
                             </div>      
@@ -292,30 +296,18 @@
                             <div class="form-row">
                                 <div class="block block1">
                                     <input type="text" autocomplete="off" required/>
-                                    <label class = "label-form">Primer apellido*</label>
+                                    <label class = "label-form">Número de expediente</label>
                                     <span></span>
                                 </div>
                                 <div class="block block2">
                                     <input type="text" autocomplete="off" required/>
-                                    <label class = "label-form">Segundo apellido*</label>
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="block block1">
-                                    <input type="text" autocomplete="off" required/>
-                                    <label class = "label-form">Primer nombre*</label>
-                                    <span></span>
-                                </div>
-                                <div class="block block2">
-                                    <input type="text" autocomplete="off" required/>
-                                    <label class = "label-form">Segundo nombre*</label>
+                                    <label class = "label-form">Usuario que crea</label>
                                     <span></span>
                                 </div>
                             </div>      
                         </div>
                         <div class="enviar-form">
-                            <input type="submit" class = "enviar-form" value = "Enviar" name="" id="">
+                            <input type="submit" class = "btn-enviar-form" value = "Enviar" name="" id="">
                         </div>
                     </form>
                 </div>
@@ -329,12 +321,13 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../../Scripts/main.js"></script>
 <script>
+    /*
     console.log(123)
     Swal.fire({
         title: 'Error!',
         text: 'Do you want to continue',
         icon: 'error',
         confirmButtonText: 'Cool'
-    })
+    })*/
 </script>
 </html>

@@ -350,3 +350,20 @@
     background: #4B7CA0;
   }
   
+  .registro > .form-registro > .enviar-form{
+    border-radius: 3px;
+    background: #E0E5F1;
+    border: 1px solid #B6B6B6;
+  }
+
+  .registro > .form-registro > .enviar-form > .btn-enviar-form{
+    background: #F57046;
+    border-radius: 3px;
+    border: 1px solid #F57046;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 20%;
+  }
