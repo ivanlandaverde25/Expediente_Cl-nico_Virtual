@@ -136,7 +136,7 @@
                         <thead>
                             <tr>
                                 <th>Expediente</th>
-                                <th>Nombres</th>
+                                <th>Nombres</th>    
                                 <th>Apellidos</th>
                                 <th>Fecha Nacimiento</th>
                                 <th>Edad</th>

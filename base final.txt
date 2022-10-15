@@ -44,7 +44,7 @@ create table if not exists mnt_paciente(
 	correo_electronico varchar(120),
 	primer_nombre_acompaniante varchar(25) not null,
 	segundo_nombre_acompaniante varchar(25),
-	pimer_apellido_acompaniante varchar(25) not null,
+	primer_apellido_acompaniante varchar(25) not null,
 	segundo_apellido_acompaniante varchar(25),
 	fecha_registro date,
 	hora_creacion time,
@@ -266,7 +266,6 @@ insert into ctl_tipo_documento ( nombre ) values ( 'Pasaporte');
 insert into ctl_tipo_documento ( nombre ) values ( 'Carnet de residencia');
 insert into ctl_tipo_documento ( nombre ) values ( 'NIT');
 
-
 insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Ahuachapan','AH',1 );
 insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Santa Ana','SA',1 );
 insert into ctl_departamento_domicilio ( nombre, abreviatura, id_pais_nacimiento ) values ( 'Sonsonate','SO',1 );
@@ -300,6 +299,10 @@ insert into ctl_municipio_domicilio ( nombre, id_departamento_domicilio) values 
 
 insert into mnt_usuario ( primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, nombre_usuario, id_tipo_documento, numero_documento, password, conectado, ultima_conexion ) values ('Ivan', 'Alessandro', 'Mendoza', 'Landaverde', 'imendoza', 1, 062082694, 123, true, NOW());
 
+insert into mnt_usuario ( primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, nombre_usuario, id_tipo_documento, numero_documento, password, conectado, ultima_conexion ) values ('Ivan', 'Alessandro', 'Mendoza', 'Landaverde', 'imendoza', 1, 062082694, 123, true, NOW());
+
+insert into mnt_paciente ( id_expediente, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, edad, id_sexo, id_pais_nacimiento, id_departamento_nacimiento, id_municipio_nacimiento, id_tipo_documento, numero_documento, direccion, id_departamento_domicilio, id_municipio_domicilio, telefono, primer_nombre_acompaniante, segundo_nombre_acompaniante, primer_apellido_acompaniante, segundo_apellido_acompaniante, fecha_registro, hora_creacion, id_usuario ) VALUES (1, 'Juan', 'Carlos', 'Rivera', 'Hernandez', '2000-12-02', 22, 2, 1, 1, 1, 1, 082541263, 'Cerca de su casita :)', 1, 1, 78963521, 'Diana', 'Sarahi', 'Escobar', 'Jimenez', CURDATE(), CURTIME(), 1 );
+
 create procedure registra_expediente(
 	IN par_id_expediente int,
     IN par_primer_nombre varchar(25),
@@ -322,9 +325,12 @@ create procedure registra_expediente(
     IN par_segundo_nombre_acompaniante varchar(25),
     IN par_primer_apellido_acompaniante varchar(25),
     IN par_segundo_apellido_acompaniante varchar(25),
-	IN par_fecha_registro DATE,
-    IN par_hora_creacion TIME,
     IN par_id_usuario int
 )
 
-insert into mnt_paciente ( id_expediente, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, edad, id_sexo, id_pais_nacimiento, id_departamento_nacimiento, id_municipio_nacimiento, id_tipo_documento, numero_documento, direccion, id_departamento_domicilio, id_municipio_domicilio, telefono, primer_nombre_acompaniante, segundo_nombre_acompaniante, pimer_apellido_acompaniante, segundo_apellido_acompaniante, fecha_registro, hora_creacion, id_usuario ) VALUES (par_id_expediente, par_primer_nombre, par_segundo_nombre, par_primer_apellido, par_segundo_apellido, par_fecha_nacimiento, par_edad, par_id_sexo, par_id_pais_nacimiento, par_id_departamento_nacimiento, par_id_municipio_nacimiento, par_id_tipo_documento, par_numero_documento, par_direccion, par_id_departamento_domicilio, par_id_municipio_domicilio, par_telefono, par_primer_nombre_acompaniante, par_segundo_nombre_acompaniante, par_pimer_apellido_acompaniante, par_segundo_apellido_acompaniante, CURDATE(), CURTIME(), par_id_usuario);
+insert into mnt_paciente ( id_expediente, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, fecha_nacimiento, edad, id_sexo, id_pais_nacimiento, id_departamento_nacimiento, id_municipio_nacimiento, id_tipo_documento, numero_documento, direccion, id_departamento_domicilio, id_municipio_domicilio, telefono, primer_nombre_acompaniante, segundo_nombre_acompaniante, primer_apellido_acompaniante, segundo_apellido_acompaniante, fecha_registro, hora_creacion, id_usuario ) VALUES (par_id_expediente, par_primer_nombre, par_segundo_nombre, par_primer_apellido, par_segundo_apellido, par_fecha_nacimiento, par_edad, par_id_sexo, par_id_pais_nacimiento, par_id_departamento_nacimiento, par_id_municipio_nacimiento, par_id_tipo_documento, par_numero_documento, par_direccion, par_id_departamento_domicilio, par_id_municipio_domicilio, par_telefono, par_primer_nombre_acompaniante, par_segundo_nombre_acompaniante, par_primer_apellido_acompaniante, par_segundo_apellido_acompaniante, CURDATE(), CURTIME(), par_id_usuario);
+
+
+
+;-- Registro por medio del procedimiento
+CALL registra_expediente(2, 'Victoria', 'Carolina', 'Mejía', 'Martinez', '1998-10-23', 24, 1, 1, 1, 1, 1, '04394567-7', 'En su mera casita', 1, 1, 7685940, 'Celina', 'Raquel', 'Lobo', 'Marroquín', 1)

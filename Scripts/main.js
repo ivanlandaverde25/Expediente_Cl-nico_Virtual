@@ -11,11 +11,4 @@ window.addEventListener('DOMContentLoaded', () => {
             confirmButtonText: 'Cool'
         });
     });
-
-
-
-
-
-
-
 });

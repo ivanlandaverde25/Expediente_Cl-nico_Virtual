@@ -8,8 +8,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../styles/style.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <title><?php $data["Titulo"] ?></title>
 </head>
 <body>
     <div class="container">
@@ -140,167 +140,176 @@
 
                 <div class="registro">
                     <form id = "RegistroExpediente" class = "form-registro" name = "RegistroExpediente" action="" method = "POST" autocomplete = "off">
+                        <!-- IDENTIFICACIÓN DE PACIENTE -->
                         <label class = "label-form-information">Información del paciente</label>
                         <div class="form-seccion-uno">
                             <div class="form-row">
                                 <div class="block block1">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "primerApellido" name = "primerApellido" required/>
                                     <label class = "label-form">Primer apellido*</label>
                                     <span></span>
                                 </div>
                                 <div class="block block2">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "segundoApellido" name = "segundoApellido" required/>
                                     <label class = "label-form">Segundo apellido*</label>
                                     <span></span>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="block block1">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "primerNombre" name = "primerNombre" required/>
                                     <label class = "label-form">Primer nombre*</label>
                                     <span></span>
                                 </div>
                                 <div class="block block2">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "segundoNombre" name = "segundoNombre" required/>
                                     <label class = "label-form">Segundo nombre*</label>
                                     <span></span>
                                 </div>
                             </div>      
                         </div>
+
+                        <!-- DATOS DE NACIMIENTO -->
                         <label class = "label-form-information">Datos de nacimiento</label>
                         <div class="form-seccion-uno">
                             <div class="form-row">
                                 <div class="block block1">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "fechaNacimiento" name = "fechaNacimiento" required/>
                                     <label class = "label-form">Fecha Nacimiento*</label>
                                     <span></span>
                                 </div>
                                 <div class="block block2">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "edad" name = "edad" required/>
                                     <label class = "label-form">Edad*</label>
                                     <span></span>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="block block1">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "sexo" name = "sexo" required/>
                                     <label class = "label-form">Sexo*</label>
                                     <span></span>
                                 </div>
                                 <div class="block block2">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "paisNacimiento" name = "paisNacimiento" required/>
                                     <label class = "label-form">Pais de nacimiento*</label>
                                     <span></span>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="block block1">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "departamentoNacimiento" name = "departamentoNacimiento" required/>
                                     <label class = "label-form">Departamento nacimiento*</label>
                                     <span></span>
                                 </div>
                                 <div class="block block2">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "municipioNacimiento" name = "municipioNacimiento" required/>
                                     <label class = "label-form">Municipio nacimiento*</label>
                                     <span></span>
                                 </div>
                             </div>        
                         </div>
+
+                        <!-- DATOS DE IDENTIFICACIÓN -->
                         <label class = "label-form-information">Datos de identificación</label>
                         <div class="form-seccion-uno">
                             <div class="form-row">
                                 <div class="block block1">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "tipoDocumento" name = "tipoDocumento" required/>
                                     <label class = "label-form">Tipo documento*</label>
                                     <span></span>
                                 </div>
                                 <div class="block block2">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "numeroDocumento" name = "numeroDocumento" required/>
                                     <label class = "label-form">Número documento*</label>
                                     <span></span>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="block block1 block2">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "direccion" name = "direccion" required/>
                                     <label class = "label-form">Dirección*</label>
                                     <span></span>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="block block1 block2">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "depatamentoDomicilio" name = "departamentoDomicilio" required/>
                                     <label class = "label-form">Departamento domicilio*</label>
                                     <span></span>
                                 </div>
                                 <div class="block block2">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "municipioDomicilio" name = "municipioDomicilio" required/>
                                     <label class = "label-form">Municipio domicilio*</label>
                                     <span></span>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="block block1 block2">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "telefono" name = "telefono" required/>
                                     <label class = "label-form">Telefiono</label>
                                     <span></span>
                                 </div>
                                 <div class="block block2">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "correoElectronico" name = "correoElectronico" required/>
                                     <label class = "label-form">Correo electronico</label>
                                     <span></span>
                                 </div>
                             </div>      
                         </div>
+
+                        <!-- DATOS DEL ACOMPAÑANTE -->
                         <label class = "label-form-information">Datos del acompañante</label>
                         <div class="form-seccion-uno">
                             <div class="form-row">
                                 <div class="block block1">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "primerApellidoAcompaniante" name = "primerApellidoAcompaniante" required/>
                                     <label class = "label-form">Primer apellido*</label>
                                     <span></span>
                                 </div>
                                 <div class="block block2">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "segundoApellidoAcompaniante" name = "segundoApellidoAcompaniante" required/>
                                     <label class = "label-form">Segundo apellido*</label>
                                     <span></span>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="block block1">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "primerNombreAcompaniante" name = "primerNombreAcompaniante" required/>
                                     <label class = "label-form">Primer nombre*</label>
                                     <span></span>
                                 </div>
                                 <div class="block block2">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "segundoNombreAcompaniante" name = "segundoNombreAcompaniante" required/>
                                     <label class = "label-form">Segundo nombre*</label>
                                     <span></span>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="block block1">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "tipoDocumentoAcompaniante" name = "tipoDocumentoAcompaniante" required/>
                                     <label class = "label-form">Tipo documento*</label>
                                     <span></span>
                                 </div>
                                 <div class="block block2">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "numeroDocumentoAcompaniante" name = "numeroDocumentoAcompaniante" required/>
                                     <label class = "label-form">Número de documento*</label>
                                     <span></span>
                                 </div>
                             </div>      
                         </div>
+
+                        <!-- NUMERO DE EXPEDIENTE -->
                         <label class = "label-form-information">Número de Expediente</label>
                         <div class="form-seccion-uno">
                             <div class="form-row">
                                 <div class="block block1">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "numeroExpediente" name = "numeroExpediente" required/>
                                     <label class = "label-form">Número de expediente</label>
                                     <span></span>
                                 </div>
                                 <div class="block block2">
-                                    <input type="text" autocomplete="off" required/>
+                                    <input type="text" autocomplete="off" id = "usuario" name = "usuario" required/>
                                     <label class = "label-form">Usuario que crea</label>
                                     <span></span>
                                 </div>
