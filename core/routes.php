@@ -17,7 +17,7 @@
         if( isset( $action ) && method_exists( $controller, $action ) ){
             $controller->$action();
         }else{
-             $controller->Accion_principal();
+            $controller->Accion_principal();
         }
     }
 ?>
